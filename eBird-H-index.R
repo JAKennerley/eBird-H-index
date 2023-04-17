@@ -8,22 +8,22 @@ MyEBirdData <- read_csv(file.choose())
 # Use the count() function to count occurrences of each value in the 'Submission ID' column
 value_counts <- MyEBirdData %>% count(`Submission ID`)
 
-# Rename the count column to 'number of species'
+# Rename the count column to number of species seen
 colnames(value_counts)[2] <- "num.species"
 
-# Use the count() function again to count occurrences of each count value
+# Use the count() function again to count occurrences of each count value i.e. number of times n species were seen
 species.totals <- value_counts %>% count(num.species)
 
-# Rename the count column to 'number of lists'
+# Rename the count column to number of checklists
 colnames(species.totals)[2] <- "num.lists"
 
 # Reverse the order of the dataframe
 species.totals <- species.totals %>% arrange(desc(row_number()))
 
-# Calculate the cumulative sum of 'lists' up to the nth row, termed 'H.total'
+# Calculate the cumulative sum of checklists up to the nth row, termed 'H.total'
 species.totals$H.total <- cumsum(species.totals$num.lists)
 
-# Change the order of the dataframe back
+# Revert the order of the dataframe back
 species.totals <- species.totals %>% arrange(desc(row_number()))
 
 # Change class of columns to numeric
