@@ -37,5 +37,5 @@ ebird.h.index <- which(species.totals$H.total < species.totals$num.species)[1] -
 if (!is.na(ebird.h.index)) {
   cat("My eBird H-index is", ebird.h.index, "\n")
 } else {
-  cat("No such row found.\n")
+  cat("Error: no such value found.\n")
 }
