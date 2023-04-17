@@ -30,12 +30,12 @@ species.totals <- species.totals %>% arrange(desc(row_number()))
 species.totals$num.species <- as.numeric(species.totals$num.species)
 species.totals$H.total <- as.numeric(species.totals$H.total)
 
-# Find the value where 'H.total' is less than 'number of species' observed
-checklist.h.index <- which(species.totals$H.total < species.totals$num.species)[1] - 1
+# Find the value where 'H.total' is less than 'number of species' observed then subtract 1 to calculate eBird H-index
+ebird.h.index <- which(species.totals$H.total < species.totals$num.species)[1] - 1
 
 # Print the result
-if (!is.na(checklist.h.index)) {
-  cat("My eBird H-index is", checklist.h.index, "\n")
+if (!is.na(ebird.h.index)) {
+  cat("My eBird H-index is", ebird.h.index, "\n")
 } else {
   cat("No such row found.\n")
 }
